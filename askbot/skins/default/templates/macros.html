@@ -120,7 +120,7 @@
                 <div class="user">
                     <ul>
                             <li class="thumb">{{ gravatar(user, 32) }}</li>
-                            <li><a href="{{ user.get_profile_url }}{% if profile_section %}?sort={{profile_section}}{% endif %}">{{user.username}}</a>{{ user_country_flag(user) }}</li>
+                            <li><a href="{{ user.get_profile_url() }}{% if profile_section %}?sort={{profile_section}}{% endif %}">{{user.username}}</a>{{ user_country_flag(user) }}</li>
                             <li>{{ user_score_and_badge_summary(user) }}</li>
                         </ul>
                 </div>
@@ -459,7 +459,7 @@ poor design of the data or methods on data objects #}
                 {% if question.is_anonymous %}
                     <span class="anonymous">{{ question.last_activity_by.get_anonymous_name() }}</span>
                 {% else %}
-                    <a href="{{ question.last_activity_by.get_profile_url }}">{{question.last_activity_by.username}}</a>{{ user_country_flag(question.last_activity_by) }}
+                    <a href="{{ question.last_activity_by.get_profile_url() }}">{{question.last_activity_by.username}}</a>{{ user_country_flag(question.last_activity_by) }}
                 {#{user_score_and_badge_summary(question.last_activity_by)}#}
                 {% endif %}
             </div>
