@@ -32,7 +32,7 @@
                 {% if request.user == view_user %}
                 <tr>
                     <td class="user-profile-tool-links" align="left" colspan="2">
-                        <a href="{% url edit_user view_user.id %}">
+                        <a href="{{ view_user.get_profile_edit_url }}">
                             {% trans %}update profile{% endtrans %}
                         </a>
                         {% if request.user == view_user and settings.ALLOW_ADD_REMOVE_LOGIN_METHODS %}

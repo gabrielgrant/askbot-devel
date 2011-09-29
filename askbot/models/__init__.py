@@ -1712,6 +1712,13 @@ def get_profile_link(self):
 
     return mark_safe(profile_link)
 
+def get_profile_edit_url(self):
+    """Returns the URL to edit this User's profile."""
+    return reverse(
+                'edit_user',
+                kwargs={'id': self.id}
+            )
+
 def user_get_karma_summary(self):
     """returns human readable sentence about
     status of user's karma"""
@@ -2056,6 +2063,7 @@ User.add_to_class(
 )
 User.add_to_class('get_flags_for_post', user_get_flags_for_post)
 User.add_to_class('get_profile_url', get_profile_url)
+User.add_to_class('get_profile_edit_url', get_profile_edit_url)
 User.add_to_class('get_profile_link', get_profile_link)
 User.add_to_class('get_tag_filtered_questions', user_get_tag_filtered_questions)
 User.add_to_class('get_messages', get_messages)
