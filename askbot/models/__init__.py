@@ -1716,7 +1716,7 @@ def get_profile_edit_url(self):
     """Returns the URL to edit this User's profile."""
     return reverse(
                 'edit_user',
-                kwargs={'id': self.id}
+                kwargs={'username': self.username}
             )
 
 def user_get_karma_summary(self):
