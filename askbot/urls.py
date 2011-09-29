@@ -189,12 +189,12 @@ urlpatterns = patterns('',
     ),
     #todo: rename as user_edit, b/c that's how template is named
     url(
-        r'^%s(?P<id>\d+)/%s$' % (_('users/'), _('edit/')),
+        r'^%s(?P<username>.+)/%s$' % (_('users/'), _('edit/')),
         views.users.edit_user,
         name='edit_user'
     ),
     url(
-        r'^%s(?P<id>\d+)/(?P<slug>.+)/%s$' % (
+        r'^%s(?P<username>.+)/%s$' % (
             _('users/'),
             _('subscriptions/'),
         ),
@@ -203,7 +203,7 @@ urlpatterns = patterns('',
         name = 'user_subscriptions'
     ),
     url(
-        r'^%s(?P<id>\d+)/(?P<slug>.+)/$' % _('users/'),
+        r'^%s(?P<username>.+)/$' % _('users/'),
         views.users.user,
         name='user_profile'
     ),

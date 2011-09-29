@@ -245,11 +245,11 @@ def set_new_email(user, new_email, nomessage=False):
 
 @login_required
 @csrf.csrf_protect
-def edit_user(request, id):
+def edit_user(request, username):
     """View that allows to edit user profile.
     This view is accessible to profile owners or site administrators
     """
-    user = get_object_or_404(models.User, id=id)
+    user = get_object_or_404(models.User, username=username)
     if not(request.user == user or request.user.is_superuser):
         raise Http404
     if request.method == "POST":
@@ -982,15 +982,13 @@ user_view_call_table = {
     'moderation': user_moderate,
 }
 #todo: rename this function - variable named user is everywhere
-def user(request, id, slug=None, tab_name=None):
+def user(request, username, tab_name=None):
     """Main user view function that works as a switchboard
 
-    id - id of the profile owner
+    username - username of the profile owner
 
-    todo: decide what to do with slug - it is not used
-    in the code in any way
     """
-    profile_owner = get_object_or_404(models.User, id = id)
+    profile_owner = get_object_or_404(models.User, username=username)
 
     if tab_name is None:
         #sort CGI parameter tells us which tab in the user

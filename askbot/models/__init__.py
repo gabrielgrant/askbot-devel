@@ -1700,7 +1700,7 @@ def get_profile_url(self):
     """Returns the URL for this User's profile."""
     return reverse(
                 'user_profile', 
-                kwargs={'id':self.id, 'slug':slugify(self.username)}
+                kwargs={'username': self.username}
             )
 
 def user_get_absolute_url(self):
