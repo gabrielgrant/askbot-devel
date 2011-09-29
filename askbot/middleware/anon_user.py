@@ -48,17 +48,3 @@ class ConnectToSessionMessagesMiddleware(object):
                 msg = askbot_settings.GREETING_FOR_ANONYMOUS_USER
                 request.user.message_set.create(message=msg)
 
-    def process_response(self, request, response):
-        """ Adds the ``'askbot_visitor'``key to cookie if user ever authenticates so
-        that the anonymous user message won't be shown. """
-        if request.user.is_authenticated() and \
-                'askbot_visitor' not in request.COOKIES :
-            #import datetime
-            #max_age = 365*24*60*60
-            #expires = datetime.datetime.strftime\
-            #        (datetime.datetime.utcnow() +
-            #                datetime.timedelta(seconds=max_age),\
-            #                        "%a, %d-%b-%Y %H:%M:%S GMT")
-            response.set_cookie('askbot_visitor', False)
-        return response
-
